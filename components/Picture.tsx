@@ -1,10 +1,9 @@
 'use client'
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Picture({ image, ISO, ouverture, objectif, vitesse} : { image: string, ISO: string, ouverture: string, objectif: string, vitesse: string }) {
     const imgRef = useRef<HTMLImageElement>(null);
     const [imgWidth, setImgWidth] = useState<string>("100%");
-    const [fontSize, setFontSize] = useState<string>("1.5rem");
 
     const handleImageLoad = () => {
         if (imgRef.current) {
@@ -14,7 +13,6 @@ export default function Picture({ image, ISO, ouverture, objectif, vitesse} : { 
                 setImgWidth(imgRef.current.naturalWidth + "px");
             } else if (imgRef.current.naturalWidth < 700) {
                 setImgWidth(imgRef.current.naturalWidth + "px");
-                setFontSize("1.0rem");
             }
         }
     };
@@ -22,9 +20,6 @@ export default function Picture({ image, ISO, ouverture, objectif, vitesse} : { 
     useEffect(() => {
         if (imgRef.current && imgRef.current.complete) {
             handleImageLoad();
-        }
-        if (parseInt(imgWidth) < 400 && imgWidth !== "100%") {
-            setFontSize("1.0rem");
         }
     }, [image]);
 

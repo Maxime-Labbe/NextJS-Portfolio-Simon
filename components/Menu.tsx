@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function Menu() {
     return (
         <div className="menu">
-            <h2 className="text-3xl mb-6 font-black"><a href="/">Séries</a></h2>
+            <h2 className="text-3xl mb-6 font-black"><Link href={"/"}>Séries</Link></h2>
             <ul>
                 <li><a href="/serie_1" className="listElem">Série 1 : Eau</a></li>
                 <li><a href="/serie_2" className="listElem">Série 2 : Étincelle</a></li>
