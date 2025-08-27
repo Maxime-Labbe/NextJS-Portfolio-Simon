@@ -6,7 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --text-color: #141414;
-  --menu-text-color: #ADADAD;
+  --menu-text-color: #adadad;
 }
 
 body {
@@ -16,31 +16,54 @@ body {
 }
 
 .title {
+  width: 80%;
+  margin-left: 5%;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
   margin-top: 20px;
   color: var(--text-color);
 }
 
 .serieTitle {
+  width: 80%;
+  margin-left: 10%;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  margin-top: 20px;
   color: var(--text-color);
 }
 
 .menu {
-  width: 25%;
-  left: 70%;
-  top:25%;
+  width: 75%;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  position: fixed;
+  position: relative;
+  z-index: 50;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 8px;
 }
 
-ul>li {
+.menu.phone {
+  height: 0;
+}
+
+.menu.open {
+  height: auto;
+}
+
+ul > li {
   margin: 10px 0;
 }
 
-.listElem{
+.listElem {
   color: var(--menu-text-color);
   font-size: 1.2rem;
   transition: all 0.2s ease-in-out;
@@ -51,13 +74,18 @@ ul>li {
   cursor: pointer;
 }
 
+.listElem.active {
+  color: var(--text-color);
+}
+
 .mainPicture {
+  height: auto;
   position: relative;
   margin-bottom: 30px;
 }
 
-.mainPicture img{
-  width: 1200px;
+.mainPicture img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.2s ease-in-out;
@@ -72,11 +100,11 @@ ul>li {
   opacity: 0;
   width: 60%;
   height: 60%;
-  background-color: rgba(255,255,255,0.9);
+  background-color: rgba(255, 255, 255, 0.9);
   color: var(--text-color);
   position: absolute;
-  top:20%;
-  left:20%;
+  top: 20%;
+  left: 20%;
   z-index: 10;
   transition: all 0.2s ease-in-out;
 }
@@ -84,21 +112,24 @@ ul>li {
 .textOverMainPic p {
   text-align: center;
   position: relative;
-  top: 40%;
-  font-size: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
   font-weight: bolder;
 }
 
-.mainPicture:hover .textOverMainPic{
+.mainPicture:hover .textOverMainPic {
   opacity: 1;
   cursor: pointer;
 }
 
 .picture {
   position: relative;
+  object-fit: cover;
   width: auto;
-  height: 100%;
-  max-height: 1000px;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -116,11 +147,15 @@ ul>li {
   opacity: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 40%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 255, 255, 0) 40%
+  );
   color: var(--background);
   position: absolute;
-  top:0%;
-  left:0%;
+  top: 0%;
+  left: 0%;
   z-index: 10;
   transition: all 0.2s ease-in-out;
 }
@@ -141,6 +176,77 @@ ul>li {
 }
 
 .SpecsText p {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-left: 6px;
+}
+
+.menu.open {
+  animation: ouais 1s ease-in-out forwards;
+}
+
+.menu.open .menu-element {
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes ouais {
+  0% {
+    opacity: 0;
+    width: 0%;
+    height: 0;
+    top: 0%;
+    left: 100%;
+  }
+  75% {
+    opacity: 1;
+  }
+  99% {
+    height: 50%;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    width: 100%;
+    font-size: 3rem;
+    margin-left: 0;
+  }
+
+  .serieTitle {
+    font-size: 2.5rem;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  .menu {
+    width: 25%;
+    left: 70%;
+    top: 25%;
+    transform: none;
+    text-align: center;
+    position: fixed;
+    align-items: normal;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .textOverMainPic p {
+    font-size: 3rem;
+  }
+  .SpecsText p {
+    font-size: 1.5rem;
+  }
 }
