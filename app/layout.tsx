@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import picturesData from "@/data/pictures.json";
 
 const couture = localFont({
   src: "../public/fonts/couture-bld.otf",
@@ -24,8 +25,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const preloadImages = Object.values(picturesData)
+    .map((serie: any) =>
+      serie.pictures?.slice(0, 3).map((pic: any) => pic.image)
+    )
+    .flat()
+    .filter(Boolean);
   return (
     <html lang="fr">
+      <head>
+        {preloadImages.map((src) => (
+          <link key={src} rel="preload" as="image" href={src} />
+        ))}
+      </head>
       <body className={`${couture.variable} ${quantify.variable}`}>
         {children}
       </body>
