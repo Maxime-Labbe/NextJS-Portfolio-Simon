@@ -1,7 +1,7 @@
 "use client";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { useEffect, useRef, useState } from "react";
-import styles from "./picture.module.css";
+import styles from "./Picture.module.css";
 
 export default function Picture({
   image,
