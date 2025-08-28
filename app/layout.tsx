@@ -3,13 +3,13 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const couture = localFont({
-  src: "./fonts/couture-bld.otf",
+  src: "../public/fonts/couture-bld.otf",
   variable: "--font-couture",
   weight: "100 900",
 });
 
 const quantify = localFont({
-  src: "./fonts/Quantify.ttf",
+  src: "../public/fonts/Quantify.ttf",
   variable: "--font-quantify",
   weight: "100 900",
 });
@@ -26,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body
-        className={`${couture.variable} ${quantify.variable}`}
-      >
+      <body className={`${couture.variable} ${quantify.variable}`}>
         {children}
       </body>
     </html>

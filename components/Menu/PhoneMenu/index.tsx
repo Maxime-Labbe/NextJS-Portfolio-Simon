@@ -1,4 +1,4 @@
-import Menu from "./Menu";
+import Menu from "..";
 import { useEffect, useState } from "react";
 import MenuButton from "./MenuButton";
 

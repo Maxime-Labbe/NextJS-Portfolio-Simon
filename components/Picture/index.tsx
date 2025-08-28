@@ -1,6 +1,7 @@
 "use client";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { useEffect, useRef, useState } from "react";
+import styles from "./picture.module.css";
 
 export default function Picture({
   image,
@@ -61,22 +62,22 @@ export default function Picture({
     }
   }, [image, height]);
 
-  useEffect(() => {
-    console.log(imgWidth, imgRef.current?.src);
-  }, [imgWidth]);
-
   return (
     <div>
-      <div className="picture" style={{ width: imgWidth }}>
+      <div
+        className="relative object-cover w-auto h-auto max-w-full max-h-full mt-10 mx-auto group"
+        style={{ width: imgWidth }}
+      >
         <img
           ref={imgRef}
           src={image}
           onLoad={handleImageLoad}
+          className="w-auto h-auto max-h-[1000px] mx-auto"
           style={imgHeight ? { height: imgHeight } : undefined}
           alt={"Photo"}
         />
-        <div className="SpecsPic">
-          <div className="SpecsText">
+        <div className={styles.SpecsPic + " group-hover:opacity-100"}>
+          <div className="absolute w-full flex flex-row justify-center bottom-0 mx-auto ">
             <p
               style={
                 textSize && {

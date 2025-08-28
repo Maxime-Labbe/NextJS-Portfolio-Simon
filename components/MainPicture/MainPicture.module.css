@@ -1,0 +1,12 @@
+.textOverMainPic {
+  opacity: 0;
+  width: 60%;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+}

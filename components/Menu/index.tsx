@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import picturesData from "@/data/pictures.json";
+import styles from "./menu.module.css";
 
 export default function Menu({ isOpen }: { isOpen?: boolean }) {
   const pathname = usePathname();
@@ -12,20 +13,26 @@ export default function Menu({ isOpen }: { isOpen?: boolean }) {
 
   return (
     <div
-      className={`menu${
-        isOpen ? " phone open" : isOpen !== undefined ? " phone" : ""
+      className={`${styles.menu}${
+        isOpen
+          ? ` ${styles.phone} ${styles.open}`
+          : isOpen !== undefined
+          ? ` ${styles.phone}`
+          : ""
       }`}
     >
-      <h2 className="text-3xl mb-6 font-black menu-element">
+      <h2 className={`text-3xl mb-6 font-black ${styles.menuElement}`}>
         <Link href={"/"}>Séries</Link>
       </h2>
       <div>
         <ul>
           {seriesTitle.map((title, index) => (
-            <li key={index} className="menu-element">
+            <li key={index} className={`mt-[10px] ${styles.menuElement}`}>
               <Link
                 href={`/serie/${index + 1}`}
-                className={`listElem ${isActive(`/serie/${index + 1}`)}`}
+                className={`${styles.listElem} ${
+                  isActive(`/serie/${index + 1}`) ? styles.active : ""
+                }`}
               >
                 Série {index + 1} : {title}
               </Link>

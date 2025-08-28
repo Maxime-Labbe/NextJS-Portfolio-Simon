@@ -4,7 +4,8 @@ import Picture from "@/components/Picture";
 import { useParams } from "next/navigation";
 import picturesData from "@/data/pictures.json";
 import { useScreenSize } from "@/hooks/useScreenSize";
-import PhoneMenu from "@/components/PhoneMenu";
+import PhoneMenu from "@/components/Menu/PhoneMenu";
+import styles from "./serie.module.css";
 
 export default function Serie() {
   const { id }: { id: string } = useParams();
@@ -16,7 +17,7 @@ export default function Serie() {
   return (
     <div className="flex flex-column justify-between md:w-[85%] w-[90%] mx-auto md:mt-24 mt-5 mb-16">
       <div className="md:w-[70%] w-full relative text-center">
-        <h1 className="serieTitle">
+        <h1 className={styles.serieTitle}>
           Série {id} : {title}
         </h1>
         <>

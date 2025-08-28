@@ -1,16 +1,17 @@
 "use client";
 import MainPicture from "@/components/MainPicture";
 import Menu from "@/components/Menu";
-import PhoneMenu from "@/components/PhoneMenu";
+import PhoneMenu from "@/components/Menu/PhoneMenu";
 import { useScreenSize } from "@/hooks/useScreenSize";
+import styles from "./home.module.css";
 
 export default function Home() {
   const { width } = useScreenSize();
 
   return (
     <div>
-      <h1 className="title">Travail de maturité de Simon Berchtold</h1>
-      <div className="flex flex-column justify-between w-[85%] mx-auto mt-10">
+      <h1 className={styles.title}>Travail de maturité de Simon Berchtold</h1>
+      <div className="flex flex-col justify-between w-[85%] mx-auto mt-10">
         <div className="md:w-[70%] w-full relative">
           <MainPicture image="/1-1.jpg" name="Série 1 : Eau" id="1" />
           <MainPicture image="/2-3.jpg" name="Série 2 : Étincelle" id="2" />
