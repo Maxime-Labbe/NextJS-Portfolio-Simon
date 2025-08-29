@@ -26,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const preloadImages = Object.values(picturesData)
-    .map((serie: any) =>
-      serie.pictures?.slice(0, 3).map((pic: any) => pic.image)
+    .map((serie: { pictures?: { image: string }[] }) =>
+      serie.pictures?.slice(0, 3).map((pic: { image: string }) => pic.image)
     )
     .flat()
     .filter(Boolean);
