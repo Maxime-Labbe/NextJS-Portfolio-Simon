@@ -4,9 +4,21 @@ import Menu from "@/components/Menu";
 import PhoneMenu from "@/components/Menu/PhoneMenu";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import styles from "./home.module.css";
+import { useEffect } from "react";
 
 export default function Home() {
   const { width } = useScreenSize();
+
+  useEffect(() => {
+    console.log(
+      "%cMade by Maxime Labbe !",
+      "color: black; font-family: Pacifico; font-size: 2rem; padding: 10px; background-color: white; border: 5px black solid; border-radius: 25px"
+    );
+    console.log(
+      "%cGitHub: https://github.com/Maxime-Labbe",
+      "color: black; font-family: Pacifico; font-size: 1.5rem; padding: 15px; background-color: white; border: 5px black solid; border-radius: 25px"
+    );
+  }, []);
 
   return (
     <div>

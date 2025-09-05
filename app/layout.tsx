@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Pacifico } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import picturesData from "@/data/pictures.json";
@@ -37,6 +38,7 @@ export default function RootLayout({
         {preloadImages.map((src) => (
           <link key={src} rel="preload" as="image" href={src} />
         ))}
+        <link rel="icon" type="image/png" href="/favicon.png" />
       </head>
       <body className={`${couture.variable} ${quantify.variable}`}>
         {children}
